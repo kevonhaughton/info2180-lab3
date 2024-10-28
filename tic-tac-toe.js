@@ -9,7 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const gameState = Array(9).fill(null); // Initialize a 9-element array with null values
 
     // Get the status div to update the message later
-    let status = document.getElementById("status");
+    const status = document.getElementById("status");
+
+    // Get the New Game button
+    const newGameButton = document.querySelector(".btn");
 
     // Define winning combinations (rows, columns, diagonals)
     const winningCombos = [
@@ -74,5 +77,24 @@ document.addEventListener("DOMContentLoaded", function() {
         square.addEventListener("mouseleave", function() {
             square.classList.remove("hover");
         });
+    });
+
+    // Reset game function when "New Game" button is clicked
+    newGameButton.addEventListener("click", function() {
+        // Clear game state array
+        gameState.fill(null);
+
+        // Clear the squares
+        squares.forEach(function(square) {
+            square.textContent = ""; // Remove X or O
+            square.classList.remove("X", "O", "hover"); // Remove X, O, and hover classes
+        });
+
+        // Reset status message
+        status.textContent = "Move your mouse over a square and click to play an X or an O.";
+        status.classList.remove("you-won");
+
+        // Reset the current player to X
+        currentPlayer = "X";
     });
 });
