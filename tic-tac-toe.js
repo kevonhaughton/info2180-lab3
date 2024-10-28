@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Add click event listener for alternating between X and O
         square.addEventListener("click", function() {
             // Only proceed if the square is empty and there's no winner yet
-            if (!gameState[index] && !status.classList.contains("you-won")) {
+            if (!gameState[index] && !status.classList.contains("you-won") && square.textContent === "") {
                 // Update the square with X or O and store the state
                 square.textContent = currentPlayer;
                 square.classList.add(currentPlayer); // Add the class "X" or "O" for styling
